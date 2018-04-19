@@ -1,0 +1,15 @@
+[Unit]
+Description=Drone CI
+After=network.target cloud-init.service
+
+[Service]
+Type=simple
+PrivateTmp=true
+User=root
+EnvironmentFile=/opt/drone/conf.env
+ExecStart=/usr/local/bin/docker-compose  -f /opt/drone/docker-compose.yml up
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

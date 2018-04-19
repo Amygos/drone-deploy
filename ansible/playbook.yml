@@ -1,0 +1,12 @@
+---
+- hosts: drone
+  vars:
+    drone_host: ""
+    drone_github_client: ""
+    drone_github_secret: ""
+    drone_secret: ""
+
+  roles:
+    - role: geerlingguy.docker
+    - role: drone-install
+    - role: drone-config

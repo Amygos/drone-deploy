@@ -1,0 +1,4 @@
+- name: Copy drone configuration
+  template:
+    src: drone-conf.j2
+    dest: /opt/drone/conf.env

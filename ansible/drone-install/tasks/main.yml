@@ -1,0 +1,22 @@
+---
+- name: Create drone directory
+  file:
+    path: /opt/drone/
+    state: directory
+
+- name: Copy docker-compose.yml
+  copy:
+    src: docker-compose.yml
+    dest: /opt/drone/docker-compose.yml
+
+- name: Copy systemd unit file
+  copy:
+   src: drone.service
+   dest: /usr/lib/systemd/system/drone.service
+
+- name: Enable drone service
+  systemd:
+    name: drone
+    daemon_reload: yes
+    enabled: yes
+
